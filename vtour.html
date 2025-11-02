@@ -12,13 +12,19 @@
 <body>
 <div class="top-bar">
     <a href="index.html" class="go-home">← Kembali ke Beranda</a>
-    <h3 class="page-title">Tur Virtual Rumah Adat Baruga</h3>
+    <h3 class="page-title">Tur Virtual Rumah Adat Kepulauan Kabupaten Selayar</h3>
     <div class="top-bar__actions">
       <button class="minimap-btn" onclick="showMinimap()">Tampilkan Minimap</button>
       <button id="toggleDragBtn" class="minimap-btn">Nonaktifkan Drag</button>
     </div>
   </div>
 
+  <!-- Modal Minimap -->
+<div id="minimapModal" class="minimap-modal" onclick="hideMinimap()">
+  <img src="assets/images/minimap_rumah.jpg" alt="Minimap Virtual Tour" class="minimap-img">
+</div>
+
+<h3>Pannellum Virtual Tour (Scenes 0 → 13)</h3>
 <div id="panorama"></div>
 <div class="scenes">
   <!-- Static scene buttons without any loop -->
@@ -265,6 +271,14 @@
     }
     }
   });
+
+// Fungsi untuk menampilkan modal minimap
+  function showMinimap() {
+    document.getElementById('minimapModal').classList.add('active');
+  }
+  function hideMinimap() {
+    document.getElementById('minimapModal').classList.remove('active');
+  }
 
   // === Menampilkan koordinat pitch dan yaw saat panorama di-klik ===
   const coordDiv = document.createElement('div');
