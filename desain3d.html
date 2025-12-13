@@ -209,16 +209,6 @@
         </div>
 
         <div class="control-group">
-          <span>Geser:</span>
-          <button class="btn-ctrl" onclick="geserKamera(-1)" title="Geser Kiri">
-            ⬅
-          </button>
-          <button class="btn-ctrl" onclick="geserKamera(1)" title="Geser Kanan">
-            ➡
-          </button>
-        </div>
-
-        <div class="control-group">
           <span>Putar:</span>
           <button
             class="btn-ctrl"
@@ -250,57 +240,40 @@
     </div>
 
     <p class="description-text">
-      Model 3D Rumah Adat Selayar. Gunakan tombol di atas atau sentuh
-      layar (cubit/geser) untuk berinteraksi langsung dengan model.
+      Rumah Adat Selayar merupakan rumah tradisional khas wilayah pulau Selayar,
+      Sulawesi Selatan, yang berkaitan erat dengan budaya Selayar.
+      Rumah ini berbentuk panggung dengan struktur kayu, memiliki sirkulasi udara
+      yang baik, dan dirancang sesuai dengan kondisi lingkungan tropis.
+      <br /><br />
+      Melalui model 3D ini, pengguna dapat mengamati bentuk arsitektur rumah adat
+      secara visual dari berbagai sudut pandang untuk memahami struktur dan nilai
+      budaya yang terkandung di dalamnya.
     </p>
 
     <footer>© 2025 Etnomatematika Rumah Adat Selayar · Tim Pengembang</footer>
 
     <script>
-      const modelViewer = document.querySelector("#boyang-viewer");
+      const model = document.querySelector("#model");
 
-      // 1. FUNGSI PUTAR (ORBIT)
-      // Mengubah sudut theta (horizontal)
       function putarKamera(deg) {
-        const orbit = modelViewer.getCameraOrbit(); // Ambil posisi saat ini
-        const theta = orbit.theta + (deg * Math.PI) / 180; // Konversi derajat ke radian
-
-        // Update posisi kamera (pertahankan phi dan radius)
-        modelViewer.cameraOrbit = `${theta}rad ${orbit.phi}rad ${orbit.radius}m`;
+        const o = model.getCameraOrbit();
+        model.cameraOrbit = `${o.theta + (deg * Math.PI) / 180}rad ${o.phi}rad ${o.radius}m`;
       }
 
-      // 2. FUNGSI ZOOM (FIELD OF VIEW)
-      // Mengubah Field of View (FOV) agar terasa zoom in/out
       function ubahZoom(step) {
-        const currentFov = modelViewer.getFieldOfView(); // Ambil FOV saat ini
-        let newFov = currentFov - step;
+        let fov = model.getFieldOfView() - step;
 
-        // Batasi zoom agar tidak terlalu jauh/dekat
-        if (newFov < 10) newFov = 10;
-        if (newFov > 45) newFov = 45;
+        // ZOOM DIPERBESAR
+        if (fov < 5) fov = 5;
+        if (fov > 70) fov = 70;
 
-        modelViewer.fieldOfView = `${newFov}deg`;
+        model.fieldOfView = `${fov}deg`;
       }
 
-      // 3. FUNGSI GESER (PAN)
-      // Mengubah target kamera (titik fokus)
-      function geserKamera(direction) {
-        const target = modelViewer.getCameraTarget(); // Ambil target saat ini (x, y, z)
-
-        // Geser sumbu X (kiri/kanan)
-        // Kita geser targetnya, kamera ikut bergeser
-        const step = 2; // Jarak geser per klik (meter/unit)
-        const newX = target.x + direction * step;
-
-        modelViewer.cameraTarget = `${newX}m ${target.y}m ${target.z}m`;
-      }
-
-      // 4. FUNGSI RESET
-      // Mengembalikan ke posisi awal (tengah)
       function resetKamera() {
-        modelViewer.cameraTarget = "auto auto auto";
-        modelViewer.cameraOrbit = "auto auto auto";
-        modelViewer.fieldOfView = "auto";
+        model.cameraOrbit = "auto auto auto";
+        model.cameraTarget = "auto auto auto";
+        model.fieldOfView = "auto";
       }
     </script>
   </body>
