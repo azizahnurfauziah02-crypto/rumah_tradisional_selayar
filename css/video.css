@@ -1,125 +1,83 @@
-:root {
-  /* Theme colors */
-  --bg: #0b1020;
-  --ink: #e6edf3;
-  --muted: #9fb0c4;
-  --panel: #0f162e;
-  --line: #1f2a44;
-  --accent: #22d3ee;
-}
-
-/* Ensure predictable box sizing across the page */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
 body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  background: var(--bg);
-  color: var(--ink);
+  background: radial-gradient(circle at top, #0f2a3d, #050b17);
+  color: #ffffff;
+  min-height: 100vh;
 }
 
-header {
-  padding: 18px 16px;
-  border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0));
-}
-
-header h1 {
-  margin: 0 0 4px;
-  font-size: 22px;
-}
-
-header .muted {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.shell {
-  max-width: 1100px;
-  margin: 18px auto;
-  padding: 0 16px;
-}
-
-/* Card-like container for the article content */
-.content {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: 14px;
+.container {
+  max-width: 420px;
+  margin: auto;
   padding: 20px;
 }
 
-.content p {
-  line-height: 1.6;
-  margin: 0 0 12px;
-}
-
-/* Back navigation positioned outside the article card */
-.page-actions {
+/* Header */
+.header {
   display: flex;
-  justify-content: flex-start;
-  margin-bottom: 12px;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 30px;
 }
 
-.back-home {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.header h1 {
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+/* Buttons */
+.btn-outline {
+  width: fit-content;
   padding: 10px 16px;
+  border: 1px solid #3cc6ff;
   border-radius: 999px;
-  border: 1px solid rgba(34, 211, 238, 0.4);
-  color: var(--accent);
+  color: #3cc6ff;
   text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.2s, transform 0.2s;
-}
-
-.back-home:hover {
-  background: rgba(34, 211, 238, 0.12);
-  transform: translateY(-1px);
-}
-
-/* ===== Konten Box ===== */
-.content-box {
-    background-color: #0f182b;
-    width: 70%;
-    margin: auto;
-    padding: 30px;
-    border-radius: 10px;
-    border: 1px solid #1a2a4d;
-    box-shadow: 0 0 25px rgba(0,0,0,0.3);
-}
-
-/* Judul dalam konten */
-h2 {
-    color: #4da6ff;
-    border-bottom: 2px solid #004aad;
-    padding-bottom: 6px;
-}
-
-h3 {
-    color: #8bc1ff;
-    margin-top: 15px;
-}
-
-/* Illustration block to showcase visual examples */
-.content figure {
-  margin: 16px 0;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  overflow: hidden;
-  background: #11192b;
-}
-
-.content figure video {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.content figure figcaption {
-  padding: 12px 16px;
   font-size: 14px;
-  color: var(--muted);
+}
+
+.btn-primary {
+  width: fit-content;
+  padding: 12px 18px;
+  background: #2bd3ff;
+  color: #003344;
+  border-radius: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Video Card */
+.video-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* Video */
+.video-wrapper {
+  position: relative;
+  padding-top: 56.25%;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Description */
+.description {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d9e6ef;
 }
