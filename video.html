@@ -1,41 +1,48 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Video Rumah Adat Bugis</title>
-  <link rel="stylesheet" href="css\video.css" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/video.css">
 </head>
 <body>
 
-  <div class="container">
+<!-- HEADER -->    
+<header class="video-header">
+  <a href="index.html" class="btn btn-outline">
+    ← Kembali ke Beranda
+  </a>
 
-    <!-- Header -->
-    <div class="header">
-      <a href="index.html" class="btn-outline">← Kembali ke Beranda</a>
-      <h1>Video<br>Rumah Adat<br>Bugis</h1>
-      <a href="https://youtube.com" target="_blank" class="btn-primary">
-        Buka di YouTube
-      </a>
-    </div>
+  <h1 class="video-title">
+    Video<br>
+    Rumah Adat<br>
+    Bugis
+  </h1>
 
-    <!-- Video Card -->
-    <div class="video-card">
-      <div class="video-wrapper">
+  <a 
+    href="https://youtu.be/gmegBXKW7Zw"
+    target="_blank"
+    class="btn btn-primary">
+    Buka di YouTube
+  </a>
+</header>
+
+  <!-- MAIN CONTENT -->
+  <main class="video-page">
+    <section class="video-card">
+      <div class="video-frame">
         <iframe
-          src="https://youtu.be/gmegBXKW7Zw?si=GNFe-QUfnEazEaFD"
-          frameborder="0"
-          allowfullscreen>
+            src="https://www.youtube.com/embed/gmegBXKW7Zw"
+            title="Video Rumah Adat Bugis"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
         </iframe>
       </div>
-
-      <p class="description">
-        Tonton dokumentasi singkat Rumah Adat Bugis untuk melihat detail
-        eksterior, interior, dan konteks budaya dalam satu video.
-      </p>
-    </div>
-
-  </div>
-
+      <p class="video-caption">Tonton dokumentasi singkat Rumah Adat Bugis untuk melihat detail eksterior, interior, dan konteks budaya dalam satu video.</p>
+    </section>
+  </main>
 </body>
 </html>
