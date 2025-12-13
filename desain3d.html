@@ -254,7 +254,7 @@
 
     <script>
       const model = document.querySelector("#model");
-
+      
       function putarKamera(deg) {
         const o = model.getCameraOrbit();
         model.cameraOrbit = `${o.theta + (deg * Math.PI) / 180}rad ${o.phi}rad ${o.radius}m`;
