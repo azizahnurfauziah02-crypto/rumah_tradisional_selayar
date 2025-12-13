@@ -1,119 +1,307 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3D Model Rumah Adat Kepulauan Kabupaten Selayar</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Model Rumah Adat Selayar</title>
 
-  <!-- Import Model Viewer -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
 
-  <style>
-    body {
-      background-color: #0d1117;
-      color: #e5e5e5;
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      position: relative;
-    }
+    <style>
+      /* --- GLOBAL STYLES --- */
+      body {
+        background-color: #0d1117;
+        color: #e5e5e5;
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        position: relative;
+      }
 
-    /* Tombol di pojok kiri atas */
-    .back-button {
-      position: absolute;
-      top: 20px;
-      left: 25px;
-      background-color: #00c8ff;
-      color: #0d1117;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 200, 255, 0.3);
-    }
+      /* --- TOMBOL KEMBALI --- */
+      .back-button {
+        position: absolute;
+        top: 20px;
+        left: 25px;
+        background-color: #00c8ff;
+        color: #0d1117;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 200, 255, 0.3);
+        z-index: 10;
+      }
 
-    .back-button:hover {
-      background-color: #008cbf;
-      box-shadow: 0 6px 16px rgba(0, 200, 255, 0.45);
-      transform: translateY(-2px);
-    }
+      .back-button:hover {
+        background-color: #008cbf;
+        transform: translateY(-2px);
+      }
 
-    h1 {
-      font-size: 1.8rem;
-      color: #00c8ff;
-      margin-bottom: 25px;
-      border-bottom: 2px solid #00c8ff;
-      padding-bottom: 8px;
-      letter-spacing: 1px;
-      text-align: center;
-    }
+      h1 {
+        font-size: 1.8rem;
+        color: #00c8ff;
+        margin-top: 80px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #00c8ff;
+        padding-bottom: 8px;
+        letter-spacing: 1px;
+        text-align: center;
+      }
 
-    .model-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #111827;
-      border-radius: 12px;
-      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
-      padding: 10px;
-      margin-bottom: 25px;
-      width: 90%;
-      max-width: 700px;
-      height: 400px;
-    }
+      /* --- CONTAINER MODEL --- */
+      .model-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #161b22;
+        border-radius: 12px;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        margin-bottom: 25px;
+        width: 90%;
+        max-width: 700px;
+        border: 1px solid #30363d;
+      }
 
-    model-viewer {
-      width: 100%;
-      height: 100%;
-      border-radius: 10px;
-      background-color: #111827;
-    }
+      .model-container {
+        width: 100%;
+        height: 400px;
+        position: relative;
+      }
 
-    footer {
-      font-size: 0.85rem;
-      color: #888;
-      text-align: center;
-      position: fixed;
-      bottom: 15px;
-    }
-  </style>
-</head>
-<body>
+      model-viewer {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        background-color: #0d1117;
+        --poster-color: #0d1117;
+      }
 
-  <!-- Tombol kiri atas -->
-  <button class="back-button" onclick="window.location.href='index.html'">← Kembali</button>
+      /* --- PANEL KONTROL TOMBOL --- */
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #21262d;
+        border-radius: 8px;
+        width: 100%;
+        box-sizing: border-box;
+      }
 
-  <h1>3D Model Rumah Adat Kepulauan Kabupaten Selayar</h1>
+      .control-group {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+      }
 
-  <div class="model-container">
-    <!-- Ganti src dengan path model GLB kamu -->
-    <model-viewer 
-      src="assets\desain_3d\Rumah Adat Selayar - Copy.glb" 
-      alt="Model 3D Rumah Adat Kepulauan Kabupaten Selayar"
-      camera-controls 
-      auto-rotate 
-      shadow-intensity="1"
-      exposure="1.2"
-      ar>
-    </model-viewer>
-  </div>
+      .control-group span {
+        font-size: 0.8rem;
+        color: #8b949e;
+        margin-right: 5px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
 
+      .btn-ctrl {
+        background-color: #30363d;
+        border: 1px solid #6e7681;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+      }
 
-<p style="width: 90%; max-width: 700px; text-align: justify; line-height: 1.7; color: #cfcfcf; margin-top: 10px;">
-  Model 3D Rumah Adat Selayar ini memungkinkan kamu untuk mengamati struktur bangunannya secara detail.
-  Setiap sudut dan bentuk arsitekturnya mencerminkan nilai historis dan budaya masyarakat Selayar. 
-  Dengan fitur rotasi dan zoom, kamu dapat menelusuri konstruksi atap, tiang penyangga, hingga tata ruang 
-  yang menjadi ciri khas rumah adat ini.
-</p>
+      .btn-ctrl:hover {
+        background-color: #00c8ff;
+        color: #000;
+        border-color: #00c8ff;
+      }
 
-  <footer>© 2025 Etnomatematika Rumah Adat Kepulauan Kabupaten Selayar</footer>
+      .btn-ctrl:active {
+        transform: scale(0.95);
+      }
 
-</body>
+      /* --- TEXT & FOOTER --- */
+      .description-text {
+        width: 90%;
+        max-width: 700px;
+        text-align: justify;
+        line-height: 1.7;
+        color: #cfcfcf;
+        margin-bottom: 60px;
+      }
+
+      footer {
+        font-size: 0.85rem;
+        color: #888;
+        text-align: center;
+        padding: 15px;
+        width: 100%;
+        background-color: #0d1117;
+        position: fixed;
+        bottom: 0;
+        z-index: 100;
+      }
+
+      @media (max-height: 700px) {
+        footer {
+          position: relative;
+        }
+        body {
+          padding-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html" class="back-button">← Kembali</a>
+
+    <h1>3D Model Rumah Adat Mandar</h1>
+
+    <div class="model-wrapper">
+      <div class="model-container">
+        <model-viewer
+          id="boyang-viewer"
+          src="assets\desain_3d\Rumah Adat Selayar - Copy.glb"
+          alt="Model 3D Rumah Adat Selayar"
+          camera-controls
+          auto-rotate
+          shadow-intensity="1"
+          exposure="1.0"
+          ar
+          interpolation-decay="200"
+          min-camera-orbit="auto auto 5%"
+          max-camera-orbit="auto auto 100%"
+        >
+        </model-viewer>
+      </div>
+
+      <div class="controls">
+        <div class="control-group">
+          <span>Zoom:</span>
+          <button class="btn-ctrl" onclick="ubahZoom(-10)" title="Zoom Out">
+            ➖
+          </button>
+          <button class="btn-ctrl" onclick="ubahZoom(10)" title="Zoom In">
+            ➕
+          </button>
+        </div>
+
+        <div class="control-group">
+          <span>Geser:</span>
+          <button class="btn-ctrl" onclick="geserKamera(-1)" title="Geser Kiri">
+            ⬅
+          </button>
+          <button class="btn-ctrl" onclick="geserKamera(1)" title="Geser Kanan">
+            ➡
+          </button>
+        </div>
+
+        <div class="control-group">
+          <span>Putar:</span>
+          <button
+            class="btn-ctrl"
+            onclick="putarKamera(-30)"
+            title="Putar Kiri"
+          >
+            ↺
+          </button>
+          <button
+            class="btn-ctrl"
+            onclick="putarKamera(30)"
+            title="Putar Kanan"
+          >
+            ↻
+          </button>
+        </div>
+
+        <div class="control-group">
+          <button
+            class="btn-ctrl"
+            onclick="resetKamera()"
+            title="Reset Posisi"
+            style="background-color: #da3633; border-color: #da3633"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <p class="description-text">
+      Model 3D Rumah Adat Selayar. Gunakan tombol di atas atau sentuh
+      layar (cubit/geser) untuk berinteraksi langsung dengan model.
+    </p>
+
+    <footer>© 2025 Etnomatematika Rumah Adat Selayar · Tim Pengembang</footer>
+
+    <script>
+      const modelViewer = document.querySelector("#boyang-viewer");
+
+      // 1. FUNGSI PUTAR (ORBIT)
+      // Mengubah sudut theta (horizontal)
+      function putarKamera(deg) {
+        const orbit = modelViewer.getCameraOrbit(); // Ambil posisi saat ini
+        const theta = orbit.theta + (deg * Math.PI) / 180; // Konversi derajat ke radian
+
+        // Update posisi kamera (pertahankan phi dan radius)
+        modelViewer.cameraOrbit = `${theta}rad ${orbit.phi}rad ${orbit.radius}m`;
+      }
+
+      // 2. FUNGSI ZOOM (FIELD OF VIEW)
+      // Mengubah Field of View (FOV) agar terasa zoom in/out
+      function ubahZoom(step) {
+        const currentFov = modelViewer.getFieldOfView(); // Ambil FOV saat ini
+        let newFov = currentFov - step;
+
+        // Batasi zoom agar tidak terlalu jauh/dekat
+        if (newFov < 10) newFov = 10;
+        if (newFov > 45) newFov = 45;
+
+        modelViewer.fieldOfView = `${newFov}deg`;
+      }
+
+      // 3. FUNGSI GESER (PAN)
+      // Mengubah target kamera (titik fokus)
+      function geserKamera(direction) {
+        const target = modelViewer.getCameraTarget(); // Ambil target saat ini (x, y, z)
+
+        // Geser sumbu X (kiri/kanan)
+        // Kita geser targetnya, kamera ikut bergeser
+        const step = 2; // Jarak geser per klik (meter/unit)
+        const newX = target.x + direction * step;
+
+        modelViewer.cameraTarget = `${newX}m ${target.y}m ${target.z}m`;
+      }
+
+      // 4. FUNGSI RESET
+      // Mengembalikan ke posisi awal (tengah)
+      function resetKamera() {
+        modelViewer.cameraTarget = "auto auto auto";
+        modelViewer.cameraOrbit = "auto auto auto";
+        modelViewer.fieldOfView = "auto";
+      }
+    </script>
+  </body>
 </html>
